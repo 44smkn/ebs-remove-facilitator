@@ -2,13 +2,13 @@ package main
 
 import (
 	"context"
-	"flag"
 	"fmt"
 	"os"
 
 	"github.com/44smkn/ebspv-eraser/pkg/aws"
 	"github.com/44smkn/ebspv-eraser/pkg/prompt"
 	"github.com/44smkn/ebspv-eraser/pkg/volume"
+	"gopkg.in/alecthomas/kingpin.v2"
 )
 
 const (
@@ -24,11 +24,11 @@ const (
 )
 
 var (
-	kubernetesCluster = flag.String("cluster", "", "target kubernetes cluster")
+	kubernetesCluster = kingpin.Flag("cluster", "kubernetes cluster using EBS Volume of your delete target").Short('c').String()
 )
 
 func main() {
-	flag.Parse()
+	kingpin.Parse()
 	os.Exit(run())
 }
 
