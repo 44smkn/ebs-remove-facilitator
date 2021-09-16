@@ -4,8 +4,10 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/44smkn/ebspv-eraser/pkg/aws"
+	"github.com/44smkn/ebspv-eraser/pkg/build"
 	"github.com/44smkn/ebspv-eraser/pkg/prompt"
 	"github.com/44smkn/ebspv-eraser/pkg/volume"
 	"gopkg.in/alecthomas/kingpin.v2"
@@ -25,11 +27,25 @@ const (
 
 var (
 	kubernetesCluster = kingpin.Flag("cluster", "kubernetes cluster using EBS Volume of your delete target").Short('c').String()
+	printVersion      = kingpin.Flag("version", "prints the build information for the executable").Short('v').Bool()
 )
 
 func main() {
 	kingpin.Parse()
+	if *printVersion {
+		fmt.Fprintf(os.Stdout, FormatVersion(build.Version, build.Date))
+		os.Exit(ExitCodeOK)
+	}
 	os.Exit(run())
+}
+
+func FormatVersion(version, buildDate string) string {
+	version = strings.TrimPrefix(version, "v")
+	var dateStr string
+	if buildDate != "" {
+		dateStr = fmt.Sprintf(" (%s)", buildDate)
+	}
+	return fmt.Sprintf("ebspv-eraser version %s%s\n", version, dateStr)
 }
 
 func run() int {
