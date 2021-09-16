@@ -15,6 +15,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/sts v1.7.0 // indirect
 	github.com/aws/smithy-go v1.8.0 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
+	gopkg.in/alecthomas/kingpin.v2 v2.2.6
 )
 
 require (
@@ -27,5 +28,4 @@ require (
 	golang.org/x/sys v0.0.0-20201119102817-f84b799fce68 // indirect
 	golang.org/x/term v0.0.0-20210503060354-a79de5458b56 // indirect
 	golang.org/x/text v0.3.3 // indirect
-	gopkg.in/alecthomas/kingpin.v2 v2.2.6 // indirect
 )
