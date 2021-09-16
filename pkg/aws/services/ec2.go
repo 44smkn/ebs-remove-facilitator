@@ -8,7 +8,7 @@ import (
 	ec2types "github.com/aws/aws-sdk-go-v2/service/ec2/types"
 )
 
-//go:generate mockgen -destination=../../../mocks/aws/services/mock_ec2.go -package=mock_services github.com/44smkn/ebspv-eraser/pkg/aws/services Ec2
+//go:generate mockgen -destination=../../../mocks/aws/services/mock_ec2.go -package=mock_services github.com/44smkn/ebspv-eraser/pkg/aws/services EC2
 type EC2 interface {
 	// Deletes the specified EBS volume.
 	DeleteVolume(ctx context.Context, params *ec2.DeleteVolumeInput, optFns ...func(*ec2.Options)) (*ec2.DeleteVolumeOutput, error)
