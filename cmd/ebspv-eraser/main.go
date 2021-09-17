@@ -69,11 +69,11 @@ func run() int {
 
 	selectedVolumes := prompt.EBSMultiSelectPrompt(availbleVolumes, *kubernetesCluster)
 	if len(selectedVolumes) == 0 {
-		fmt.Fprintln(os.Stderr, "You don't choose volumes, so process aborted")
+		fmt.Fprintln(os.Stderr, "You don't choose volumes, so aborted")
 		return ExitCodeNoSelectedDeletionVolumeError
 	}
 	if delete := prompt.DeleteVolumesConfirm(selectedVolumes); !delete {
-		fmt.Fprintln(os.Stderr, "Process aborted")
+		fmt.Fprintln(os.Stderr, "aborted")
 		return ExitCodeCancelDeleteProcess
 	}
 
