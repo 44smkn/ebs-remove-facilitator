@@ -11,7 +11,7 @@ builds:
         - -s -w -X github.com/44smkn/ebspv-eraser/pkg/build.Version={{.Version}} -X github.com/44smkn/ebspv-eraser/pkg/build.Date={{time "2006-01-02"}}
     id: macos
     goos: [darwin]
-    goarch: [amd64]
+    goarch: [amd64, arm64]
 
   - <<: *build_defaults
     id: linux
